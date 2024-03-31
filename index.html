@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="number" v-model="woodPallet.Id" placeholder="Enter Id">
+        <input type="text" v-model="woodPallet.Brand" placeholder="Enter Brand">
+        <input type="number" v-model="woodPallet.Price" placeholder="Enter Price">
+        <input type="number" v-model="woodPallet.Quality" placeholder="Enter Quality">
+        <button @click="CreatewoodPallet()">Add</button>
+        <table>
+            <thead>
+                <th>Id</th>
+                <th>Brand</th>
+                <th>Price</th>
+                <th>Quality</th>
+            </thead>
+            <tbody>
+                <tr v-for="wood in  woodStock">
+                    <td>{{wood.Id}}</td>
+                    <td>{{wood.Brand}}</td>
+                    <td>{{wood.Price}}</td>
+                    <td>{{wood.Quality}}</td>
+                </tr>
+            </tbody>
+        </table>
+       <input type="number" v-model="targetid" placeholder="Enter Id">
+       <button @click="GetWoodById()">GetWoodById</button>
+       <div v-if="foundwood">
+        <h2>Found Wood</h2>
+        <p>ID: {{foundwood.Id}}</p>
+        <p>Brand: {{foundwood.Brand}}</p>
+        <p>Price: {{foundwood.Price}}</p>
+        <p>Quality: {{foundwood.Quality}}</p>
+        <div v-else>
+            <p>No wood found with the given ID.</p>
+        </div>
+
+       </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
